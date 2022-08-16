@@ -1,3 +1,6 @@
+//Надеюсь, теперь ошибка исправлена)
+//Не совсем понимаю, что её вызывает
+
 import { useState, useEffect } from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import Header from "./Header";
