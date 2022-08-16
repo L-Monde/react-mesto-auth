@@ -18,9 +18,7 @@ export const getUserData = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  })
-    .then(checkResponse)
-    .catch((err) => console.log("Ошибка:", err));
+  }).then(checkResponse);
 };
 
 export const signUp = ({ email, password }) => {
@@ -33,9 +31,7 @@ export const signUp = ({ email, password }) => {
       email,
       password,
     }),
-  })
-    .then(checkResponse)
-    .catch((err) => console.log("Ошибка:", err));
+  }).then(checkResponse);
 };
 
 export const signIn = ({ password, email }) => {
@@ -48,7 +44,5 @@ export const signIn = ({ password, email }) => {
       password,
       email,
     }),
-  })
-    .then(checkResponse)
-    .catch((err) => console.log("Ошибка:", err));
+  }).then(checkResponse);
 };

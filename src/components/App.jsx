@@ -167,7 +167,11 @@ function App() {
   }
   function handleProfileTokenLogin() {
     if (localStorage.getItem("jwt")) {
-      const token = JSON.parse(localStorage.getItem("jwt"));
+      const preToken = localStorage.getItem("jwt");
+      console.log(preToken);
+      const token = JSON.parse(preToken);
+      console.log(token);
+
       auth
         .getUserData(token)
         .then((res) => {
