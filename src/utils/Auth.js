@@ -1,4 +1,15 @@
 const base_url = "https://auth.nomoreparties.co";
+const checkResponse = (res) => {
+  if (res.ok) {
+    return res.json();
+  }
+  if (res.status === 400) {
+    return Promise.reject(`Ошибка передачи данных`);
+  } else if (res.status === 401) {
+    return Promise.reject(`Ошибка передаваемыч данных`);
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+};
 
 export const getUserData = (token) => {
   return fetch(base_url + "/users/me", {
@@ -8,17 +19,7 @@ export const getUserData = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      if (res.status === 400) {
-        return Promise.reject(`Ошибка передачи токена`);
-      } else if (res.status === 401) {
-        return Promise.reject(`Ошибка передаваемого токена`);
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(checkResponse)
     .catch((err) => console.log("Ошибка:", err));
 };
 
@@ -33,15 +34,7 @@ export const signUp = ({ email, password }) => {
       password,
     }),
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      if (res.status === 400) {
-        return Promise.reject(`Ошибка заполнения формы`);
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(checkResponse)
     .catch((err) => console.log("Ошибка:", err));
 };
 
@@ -56,18 +49,6 @@ export const signIn = ({ password, email }) => {
       email,
     }),
   })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      if (res.status === 400) {
-        return Promise.reject(`Ошибка: ${res.status}`);
-      } else if (res.status === 401) {
-        return Promise.reject(
-          `Ошибка: пользователь с email ${email} не найден`
-        );
-      }
-      return Promise.reject(`Ошибка: ${res.status}`);
-    })
+    .then(checkResponse)
     .catch((err) => console.log("Ошибка:", err));
 };
