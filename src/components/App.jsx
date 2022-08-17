@@ -169,6 +169,10 @@ function App() {
     setIsConfirmPopupOpen(true);
   }
   function handleProfileTokenLogin() {
+    console.log(
+      "если проблема именно с json, то должно работать всё, кроме токена"
+    );
+    /*
     if (localStorage.getItem("jwt")) {
       const preToken = localStorage.getItem("jwt");
       console.log(preToken);
@@ -185,6 +189,7 @@ function App() {
           console.log("Ошибка:", err);
         });
     }
+    */
   }
   function handleProfileLogout() {
     localStorage.removeItem("jwt");
