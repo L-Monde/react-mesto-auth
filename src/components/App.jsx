@@ -145,6 +145,7 @@ function App() {
       .catch((err) => {
         console.log("Ошибка:", err);
         switchSuccess(false);
+        setIsConfirmPopupOpen(true);
       });
   }
   function handleConfirmRegister() {
@@ -169,19 +170,17 @@ function App() {
     setIsConfirmPopupOpen(true);
   }
   function handleProfileTokenLogin() {
-    console.log(
-      "если проблема именно с json, то должно работать всё, кроме токена"
-    );
+    console.log();
+    //"если проблема именно с json, то должно работать всё, кроме токена"
     /*
-    if (localStorage.getItem("jwt")) {
+      if (localStorage.getItem("jwt")) {
       const preToken = localStorage.getItem("jwt");
-      console.log(preToken);
       const token = JSON.parse(preToken);
-      console.log(token);
-
       auth
         .getUserData(token)
         .then((res) => {
+          console.log(res);
+          setUserEmail(res.data.email);
           switchIsLoggedIn(true);
           history.push("/");
         })
@@ -189,7 +188,7 @@ function App() {
           console.log("Ошибка:", err);
         });
     }
-    */
+      */
   }
   function handleProfileLogout() {
     localStorage.removeItem("jwt");
