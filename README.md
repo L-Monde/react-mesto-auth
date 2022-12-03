@@ -23,4 +23,4 @@
 
 **GitHub Pages**
 
-* [Ссылка на GitHub Pages.](https://l-monde.github.io/react-mesto-auth/public/)
+* [Ссылка на GitHub Pages.](https://l-monde.github.io/react-mesto-auth/)
